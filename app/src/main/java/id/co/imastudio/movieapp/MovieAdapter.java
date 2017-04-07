@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -52,6 +53,21 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 .into(holder.posterMovie);
 
         holder.ratingMovie.setText(dataMovie.getRatingMovie());
+
+        holder.posterMovie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Judul : "+dataMovie.getJudulMovie(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.posterMovie.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(context, "Deskripsi : "+dataMovie.getDeskripsiMovie(), Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
 
     }
 
